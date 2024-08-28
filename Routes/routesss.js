@@ -79,7 +79,7 @@ router.post('/create', (req, res) => {
 
     if (!checkNumber.test(mobile)) {
         return res.status(422).json({
-            error: 'Mobile number should start from 6 to 9 and contain exactly 10 digits'
+            error: 'Mobile number should contain exactly 10 digits'
         });
     }
     if(!checkStartingDigit.test(mobile)){
