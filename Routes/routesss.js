@@ -3,7 +3,7 @@ const router = new express.Router();
 const conn = require('../db/connection');
 
 const checkUserEmail = (email, id, callback) => {
-    let emailQuery = 'SELECT * FROM users WHERE email = ?';
+    let emailQuery = 'SELECT * FROM users WHERE email = ? and status = 0';
     const emailParams = [email];
 
     if (id) {
@@ -31,7 +31,7 @@ const checkUserEmail = (email, id, callback) => {
 
 
 const checkUserMobile = (mobile, id, callback) => {
-    let mobileQuery = 'SELECT * FROM users WHERE mobile = ?';
+    let mobileQuery = 'SELECT * FROM users WHERE email = ? and status = 0';
     const mobileParams = [mobile];
 
     if (id) {
@@ -82,9 +82,9 @@ router.post('/create', (req, res) => {
             error: 'Mobile number should contain exactly 10 digits'
         });
     }
-    if(!checkStartingDigit.test(mobile)){
+    if (!checkStartingDigit.test(mobile)) {
         return res.status.json({
-            error:"Mobile number should Start From 6 to 9"
+            error: "Mobile number should Start From 6 to 9"
         })
     }
 
@@ -193,9 +193,9 @@ router.patch('/updateuser/:id', (req, res) => {
             error: 'Mobile number should contain exactly 10 digits'
         });
     }
-    if(!checkStartingDigit.test(mobile)){
+    if (!checkStartingDigit.test(mobile)) {
         return res.status.json({
-            error:"Mobile number should Start From 6 to 9"
+            error: "Mobile number should Start From 6 to 9"
         })
     }
 
