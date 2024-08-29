@@ -2,7 +2,7 @@ const express=require("express");
 const bodyParser=require("body-parser");
 const cors=require("cors");
 require("./db/connection");
-const router=require("./Routes/routesss")
+const router=require("./Routes/userRoutes")
 
 
 const app=express();
