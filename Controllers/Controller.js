@@ -96,13 +96,14 @@ const userCreate = (req, res) => {
             }
 
             conn.query('INSERT INTO users (name, email, age, mobile, work, `add`, `desc`) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                [name, email, age, mobile, work, add, desc], (err, insertResult) => {
+                [name, email, age, mobile, work, add, desc], (err,feild ,insertResult) => {
                     if (err) {
                         console.error('Database insertion error:', err);
                         return res.status(500).json({
                             error: 'Database insertion error'
                         });
                     }
+                    console.log(feild);
                     res.status(201).json(req.body);
                 });
         });
