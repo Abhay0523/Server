@@ -3,7 +3,7 @@ const { checkUserEmail, checkUserMobile, createUser, getUsers, deactivateUsers, 
 
 const userCreate = async (req, res) => {
     try {
-        const { name, email, age, mobile, work, add, desc } = req.body;
+        const { name, email, age, mobile, work, add } = req.body;
 
         if (!name || !email || !age || !mobile || !work || !add) {
             return res.status(422).json({ error: 'Please fill all fields' });
